@@ -1,0 +1,7 @@
+{
+  "verbose": true,
+  "ignore": ["target", ".git", "db.sqlite", "assets/css/tailwind.css"],
+  "delay": 1000,
+  "root_folder": ".",
+  "exec": "npx tailwindcss -i ./assets/css/main.css -o ./assets/css/tailwind.css && cargo run"
+}

@@ -1,0 +1,14 @@
+{% extends "base.html" %} {% block content %}
+<div style="display: flex; flex-direction: column">
+  <h1>TODO items:</h1>
+  <ul id="list">
+    {% for item in items %}
+    {% include "item.html" %}
+    {% endfor %}
+  </ul>
+  <form id="add-item" hx-post="/" hx-target="#list" hx-swap="beforeend">
+    <input type="text" name="text" />
+    <button type="submit">Add item</button>
+  </form>
+</div>
+{% endblock %}

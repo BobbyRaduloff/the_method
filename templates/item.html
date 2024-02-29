@@ -1,0 +1,6 @@
+<li id="item-{{item.id}}">
+  {% if item.done %} ✅ {{item.text}} {% else %} ❌ {{item.text}} {% endif %}
+  <button hx-post="/flip/{{item.id}}" hx-target="#item-{{item.id}}">
+    mark as {% if item.done %} not done {% else %} done {% endif %}
+  </button>
+</li>
