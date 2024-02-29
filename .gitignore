@@ -1,1 +1,3 @@
 /target
+db.sqlite
+/assets/css/tailwind.css
