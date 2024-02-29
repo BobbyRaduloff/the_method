@@ -1,14 +1,14 @@
 {% extends "base.html" %} {% block content %}
-<div style="display: flex; flex-direction: column">
-  <h1>TODO items:</h1>
-  <ul id="list">
+<div class="flex flex-col items-center justify-center gap-4 max-w-[480px]">
+  <h1 class="text-4xl w-full text-center">TODO items</h1>
+  <ul id="list" class="flex flex-col gap-2 w-full">
     {% for item in items %}
     {% include "item.html" %}
     {% endfor %}
   </ul>
-  <form id="add-item" hx-post="/" hx-target="#list" hx-swap="beforeend">
-    <input type="text" name="text" />
-    <button type="submit">Add item</button>
+  <form id="add-item" hx-post="/" hx-target="#list" hx-swap="beforeend" class="w-full flex flex-row gap-2 justify-between" hx-on::after-request="this.reset()">
+    <input type="text" name="text" class="border-2 border-black rounded-lg"/>
+    <button type="submit" class="border-2 border-black rounded-lg p-1">add item</button>
   </form>
 </div>
 {% endblock %}

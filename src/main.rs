@@ -7,6 +7,7 @@ use entity::todo_item as TodoItem;
 use migration::{Migrator, MigratorTrait};
 use sea_orm::{ActiveModelTrait, Database, DatabaseConnection, EntityTrait};
 use serde::Deserialize;
+use std::process::Command;
 use tower_http::services::ServeDir;
 
 #[derive(Clone)]
@@ -19,6 +20,15 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     tracing_subscriber::fmt::init();
 
     dotenv::dotenv().ok();
+
+    Command::new("npx")
+        .arg("tailwindcss")
+        .arg("-i")
+        .arg("./assets/css/main.css")
+        .arg("-o")
+        .arg("./assets/css/tailwind.css")
+        .spawn()
+        .expect("Failed to run tailwindcss.");
 
     let db_url = std::env::var("DATABASE_URL").expect("DATABASE_URL is not set in .env");
     let db: DatabaseConnection = Database::connect(db_url).await.unwrap();

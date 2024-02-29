@@ -1,6 +1,12 @@
-<li id="item-{{item.id}}">
-  {% if item.done %} ✅ {{item.text}} {% else %} ❌ {{item.text}} {% endif %}
-  <button hx-post="/flip/{{item.id}}" hx-target="#item-{{item.id}}">
+<li id="item-{{item.id}}" class="w-full flex flex-row justify-between gap-2">
+  <div>
+    {% if item.done %} ✅ {{item.text}} {% else %} ❌ {{item.text}} {% endif %}
+  </div>
+  <button
+    hx-post="/flip/{{item.id}}"
+    hx-target="#item-{{item.id}}"
+    class="border-2 border-black rounded-lg p-1"
+  >
     mark as {% if item.done %} not done {% else %} done {% endif %}
   </button>
 </li>
